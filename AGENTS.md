@@ -28,3 +28,8 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Application architecture
+- Keep certificate registry operations in a shared browser-safe module and read browser storage only after hydration; both pages must use the same records without SSR mismatches.
+- This demonstration uses browser-local persistence rather than external services so registration and verification work without network APIs; a registry match is not institutional authentication.
+- Define visual tokens and reusable layout styles in src/styles.css and use the shared Button for interactive commands to keep the visual system consistent.

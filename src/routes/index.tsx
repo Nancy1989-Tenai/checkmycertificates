@@ -1,23 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { CertificateWorkspace } from "@/components/certificate-workspace";
 
-// The home route ships no og:image, so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
-  component: Index,
+  head: () => ({ meta: [
+    { title: "Add my certificate | Check My Certificate" },
+    { name: "description", content: "Register your qualification and get a unique Certificate ID to share with an employer in the Check My Certificate demo." },
+    { property: "og:title", content: "Add my certificate | Check My Certificate" },
+    { property: "og:description", content: "Bring your qualifications with you. Register your certificate and take the next step." },
+    { property: "og:type", content: "website" },
+    { name: "twitter:card", content: "summary_large_image" },
+  ] }),
+  component: () => <CertificateWorkspace mode="add" />,
 });
-
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
-}
